@@ -13,7 +13,7 @@ This project is a real-time control system using **two DC motors with encoders**
 ## Features
 
 * Real-time **position tracking** with encoders
-* PID control (currently only P is active for simplicity)
+* PID control
 * Speed and direction control through L293D motor driver
 * Current sensing using **1Ω shunt resistor** and **LM741 op-amp**
 * Serial output of motor position, speed, error, and (attempted) current readings
@@ -25,7 +25,7 @@ This project is a real-time control system using **two DC motors with encoders**
 * 2x DC Motors with Encoders
 * 1x L293D Motor Driver IC
 * 1x Arduino Uno
-* 1x LM741 Op-Amp
+* 1x 741 Op-Amp
 * 1x 1Ω Shunt Resistor
 * 9V Battery (motor supply)
 * 10kΩ and 1kΩ resistors for op-amp circuit
@@ -71,9 +71,9 @@ This project is a real-time control system using **two DC motors with encoders**
 
 * Reads encoder ticks from both motors
 * Calculates position, speed, and error
-* Implements a basic P/PID controller to reach target position
+* Implements a basic PID controller to reach target position
 * Generates PWM output based on control signal `u`
-* Optionally reads current via analog input (A0) from op-amp
+* Optionally reads current via analog input (A0/A1) from op-amp
 
 ---
 
@@ -82,14 +82,14 @@ This project is a real-time control system using **two DC motors with encoders**
 Despite correct circuit connections, the current reading remains **0V**. This may be due to:
 
 * **Improper ground referencing**: The shunt resistor must be placed between the **motor driver GND** and **system ground**, not between battery negative and system ground.
-* **Low voltage drop across the shunt**: If the current is low (e.g., 100mA), the voltage drop across a 1Ω resistor is only 0.1V — often too small for LM741 to amplify effectively without proper gain.
-* **Op-Amp configuration issue**: LM741 requires proper biasing and might not be suitable for single-supply low-side current sensing. A better choice would be a **rail-to-rail op-amp** or dedicated current sensor like **INA219**.
+* **Low voltage drop across the shunt**: If the current is low (e.g., 100mA), the voltage drop across a 1Ω resistor is only 0.1V — often too small for 741 OPERATIONAL AMPLIFIER to amplify effectively without proper gain.
+* **Op-Amp configuration issue**: 741 AMPLIFIER requires proper biasing and might not be suitable for single-supply low-side current sensing. A better choice would be a **rail-to-rail op-amp** or dedicated current sensor like **INA219**.
 
 ---
 
 ## To-Do / Improvements
 
-* Replace LM741 with a dedicated current sensor (INA219 or ACS712)
+* Replace 741 OPERATIONAL AMPLIFIER with a dedicated current sensor (INA219 or ACS712)
 * Fine-tune PID gains using tuning techniques
 * Add Bluetooth or button-based control for setting target positions
 * Visual display using LCD or serial plotter
